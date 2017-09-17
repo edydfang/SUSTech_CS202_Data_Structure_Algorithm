@@ -15,8 +15,12 @@ A single line for each test case, represent the number of lucky number in [L, R]
 
 ## Sample input
 
+```
 50 100
+```
 
 ## Sample output
 
+```
 3
+```
