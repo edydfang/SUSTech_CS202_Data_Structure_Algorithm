@@ -18,15 +18,20 @@ One line for each test case, write the number of integer point.
 
 ## Sample Input
 
-> 1 3 3 1
-> 1 11 5 3
-> 1 1 9 9
+```
+1 3 3 1
+1 11 5 3
+1 1 9 9
+```
 
 ## Sample Output
 
-> 1
-> 3
-> 7
+```
+1
+3
+7
+```
 
 ## HINT
+
 Bonus Problem. Math
