@@ -1,4 +1,4 @@
-# Problem F: Cut Ropes for Lily
+# Problem F: Cut Ropes for Lily (POJ 1064)
 
 Time Limit: 2 Sec  Memory Limit: 128 MB
 
