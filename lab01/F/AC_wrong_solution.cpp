@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-
+// reference http://www.programering.com/a/MTM5ETNwATE.html
 using namespace std;
 
 int n_ropes,n_piecces;
@@ -27,7 +27,7 @@ int main(){
         double input;
         for(int i=0;i<n_ropes;i++){
             cin >> input;
-            ropes[i] = floor(input * 100+0.5);
+            ropes[i] = input * 100.0;
             r += ropes[i];
         }
         mid = (l+r)/n_piecces+1;
@@ -39,25 +39,16 @@ int main(){
 			cout << (int)(ropes[i]/100)<<"."<<setfill('0') << setw(2) <<ropes[i]%100 << " "; 
 		}
         test*/
-        int out;
-        do{
-            
-            if(test_avaiable(ropes,mid)){
-                diff = r-mid;
-                out = mid;
-                l = mid;
-                mid = (l+r)/2;
-            } else{
-                diff = mid-l;
-                out = l;
-                r = mid;
-                mid = (l+r)/2;
-            }
-        }while(diff>1);
-        if(test_avaiable(ropes,out+1)){
-            out = out+1;
+        int res = 0;
+        while (l <= r)
+        {
+            int mid = (r + l) / 2;
+            //printf("l = %d, r = %d, mid = %d, res = %d.\n", l, r, mid, res);
+            if (test_avaiable(ropes,mid))
+                res = max(res, mid), l = mid + 1;
+            else r = mid - 1;
         }
-        cout << (int) (out/100) << "." << setfill('0') << setw(2) << out % 100 <<endl;
+        cout << res/100 << "." << setfill('0') << setw(2) << res % 100 <<endl;
         
     }
     return 0;
