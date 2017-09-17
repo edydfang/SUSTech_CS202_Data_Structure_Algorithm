@@ -8,9 +8,9 @@ Lucy asked Huang Bo a question, “You have two 2-D point A and B, please calcul
 
 ## Input
 
-There are multiple test cases (less than 1000), for each test, there will be one line contain four integers ax, ay and bx, by, represent the point A and B
+There are multiple test cases (less than 1000), for each test, there will be one line contain four `positive integers` ax, ay and bx, by, represent the point A and B
 
-Notice that the absolute value of integer is 109.
+Notice that the max value of integer is 109.
 
 ## Output
 
