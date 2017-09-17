@@ -9,7 +9,7 @@ Lily asked Huang Bo: “We have n ropes at hand, and we want to cut them into so
 
 ## Input
 
-There are multiple test cases (less than 1000), for each test case, the first line will be two integers n and k (0 <= n <= 1000, 0 <= k <= 10000), the second line will be n floating numbers and the ith number is the length of i-th ropes, noted as ai (0<= ai <= 100000). And all lengths in the input file are written with a centimeter precision, with exactly two digits after a decimal point.
+There are multiple test cases (less than 1000). For each test case, the first line will be two integers n and k (0 <= n <= 1000, 0 <= k <= 10000), the second line will be n floating numbers and the ith number is the length of i-th ropes, denoted as `ai` (0 <= ai <= 100000). And all lengths in the input file are written with a centimeter precision, with exactly two digits after a decimal point.
 
 ## Output
 
