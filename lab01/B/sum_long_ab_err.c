@@ -5,8 +5,6 @@
 void getSum(char *num1, char *num2);
 int main()
 {
-    //char *str1 = (char *)malloc(1001);
-    //char *str2 = (char *)malloc(1001);
     char str1[1001], str2[1001];
     int i = 0, k = 0;
     char ch;
@@ -38,8 +36,6 @@ int main()
             }
         }
     }
-    // free(str1);
-    // free(str2);
     return 0;
 }
 
@@ -49,7 +45,6 @@ void getSum(char *num1, char *num2)
     int l2 = strlen(num2);
     int maxlen = (l1 > l2 ? l1 : l2) + 1;
     int i = 0, carry = 0;
-    //int *result = (int *)malloc(sizeof(int) * maxlen);
     int result[1002];
 
     while (i < l1 && i < l2)
@@ -108,6 +103,5 @@ void getSum(char *num1, char *num2)
         printf("%d", result[i]);
     }
     printf("\n");
-    //free(result);
     return;
 }
