@@ -93,7 +93,7 @@ Universal Algorithm + Tiny change
 
 - Actually easy to think of the presedures
 - Binary search for the largest length of pieces
-- OJ answer actually has problem. They ignore the error caused when reading the number from the `stdin`, which is a process of **decimal to binary float**. For example, when read "5.74", the number stored in the variable may become "5.73999999". And when the algorithm test for the possible cuts, only the digits "5.73" are reserved. So all of the right answer should have read the number by scanning the `float` from the input.
+- OJ answer actually has problem. They ignore the error caused when reading the number from the `stdin`, which is a process of **decimal to binary float**. For example, when read "5.74", the number stored in the variable may become "5.73999999". And when the algorithm test for the possible cuts, only the digits "5.73" are reserved. So all of the right answers to the test cases on OJ should have read the number by scanning the `float` from the input.
 - Reference: https://www.zhihu.com/question/25457573
 
 A special case is given here:
