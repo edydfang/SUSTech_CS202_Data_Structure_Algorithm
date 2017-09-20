@@ -104,3 +104,9 @@ A special case is given here:
 ```
 
 They right answer should be `4.39`, but the answer in OJ is `4.38`
+
+```
+8.78 => 8.7799999
+1.15 => 1.1499999
+...
+```

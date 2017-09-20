@@ -44,7 +44,7 @@ int main(){
 			map_to(s, i);
 		}
 		int t = 0;
-		for (int j = 4; j > 0; j--){ // sort by the number of certain cards
+		for (int j = 4; j > 0; j--){ // sort by the number of certain kind of cards
 			for (int i = 14; i > -1; i--){ // tranverse all the cards
 				if (a[i] == j){
 					for (int k = 0; k < j; k++){
