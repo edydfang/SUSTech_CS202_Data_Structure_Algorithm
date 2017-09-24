@@ -12,7 +12,7 @@ Given an ascending sorted array A with n integers, and if integer m is in the ar
 
 The first line will be an integer T(100<=T<=1000), which is the number of test cases.
 
-For each case have two lines. The first line of the input contains two number n and m, n is the length of the array(1<=n<=106). You should determine whether m (1<=m<=108) is in the array or not. The second line contains the values in the array.
+For each case have two lines. The first line of the input contains two number n and m, n is the length of the array(1<=n<=10^6). You should determine whether m (1<=m<=10^8) is in the array or not. The second line contains the values in the array.
 
 #### Output
 
