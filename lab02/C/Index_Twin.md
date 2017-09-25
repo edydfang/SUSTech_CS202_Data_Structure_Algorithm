@@ -12,6 +12,7 @@ The first line will be an integer T(1<T<=10), which is the number of test cases.
 For each case contain two lines.The first line contains two numbers n(1<=n<=5000) and m(1<=m<=108), n is the size of array A. m is the specified target.
 
 The second line contains n integers: a1, a2, ... an (1<=ai <= 10^6, 1 <= i <= n).
+Sorted?
 
 #### Output
 

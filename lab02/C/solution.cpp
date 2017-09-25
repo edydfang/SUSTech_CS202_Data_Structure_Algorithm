@@ -9,12 +9,13 @@ int main(){
     for(i=0;i<T;i++){
         cin >> n >> m;
         long numbers[n];
+        long needs[n]
         memset(numbers,0,sizeof(numbers));
         for(j=0;j<n;j++){
             cin >> numbers[j];
         }
 
-        // quick sort
+        // quick sort needs[] and 
         // search
     }
 }

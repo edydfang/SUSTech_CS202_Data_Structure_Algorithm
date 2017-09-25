@@ -4,7 +4,7 @@ Time Limit: 1 Sec  Memory Limit: 128 MB
 
 #### Description
 
-In CS203 class, given an integer N, you know how to calculate 1 + 2 + 3 + … + N. This time, Bo Huang wants you to compute 12 + 22 + 32 + ... + N2
+In CS203 class, given an integer N, you know how to calculate 1 + 2 + 3 + … + N. This time, Bo Huang wants you to compute 1^2 + 2^2 + 3^2 + ... + N^2
 Input
 
 The first line will be an integer T(1<T<=1000), which is the number of test cases.
