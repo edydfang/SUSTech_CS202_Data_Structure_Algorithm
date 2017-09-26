@@ -4,7 +4,7 @@ Time Limit: 2 Sec  Memory Limit: 128 MB
 
 #### Description
 
-Do you remember Index Twin? This time, Cuperman defines `(i, j, k)` as index triple if `A[i]+A[j]+A[k] = m`. Given a sorted array `A` and specific target `m`, could you help Bo Huang to determine whether there is an index triple in the array `A` with specific target `m`?
+Do you remember Index Twin? This time, Cuperman defines `(i, j, k)`, where i < j < k,  as index triple if `A[i]+A[j]+A[k] = m`. Given a sorted array `A` and specific target `m`, could you help Bo Huang to determine whether there is an index triple in the array `A` with specific target `m`?
 
 #### Input
 
