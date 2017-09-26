@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 
 using namespace std;
-
+int a[5001], sum[5001][5001]; // long -> cause segmentfault on OJ
 int main()
 {
     int T, i, n;
@@ -10,10 +10,9 @@ int main()
     for (i = 0; i < T; i++)
     {
         cin >> n >> m;
-        long a[n], sum[n][n];
         int j, k, upper = -1;
-        memset(a, 0, sizeof(a));
-        memset(sum, 0, sizeof(sum));
+        memset(a, 0, sizeof(long)*n);
+        memset(sum, 0, sizeof(long)*n*n);
         // input data
         for (j = 0; j < n; j++)
         {
@@ -76,9 +75,9 @@ int main()
             if (find)
                 break;
         }
-        if(find)
-        cout << "YES" << endl;
+        if (find)
+            cout << "YES" << endl;
         else
-        cout << "NO" <<endl;
+            cout << "NO" << endl;
     }
 }
