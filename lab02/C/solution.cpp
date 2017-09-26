@@ -9,55 +9,55 @@ int main()
     cin >> T;
     for (i = 0; i < T; i++)
     {
-        int count = 0;
+        int count = 0, upper = -1;
         cin >> n >> m;
-        long numbers[n], needs[n];
+        long numbers[n];
         memset(numbers, 0, sizeof(numbers));
         for (j = 0; j < n; j++)
         {
             cin >> numbers[j];
-            if (numbers[j] > m)
+            //cout << "xxx: " << numbers[j] << endl;
+            if (upper == -1 && numbers[j] > m)
             {
-                break;
-            }
-            else
-            {
-                needs[j] = m - numbers[j];
+                upper = j;
             }
         }
-        int l, r, mid, k = 0, upper_bound = j;
-        for (k = 0; k <= j; k++)
+        int l, r, mid, k = 0;
+        if (upper == -1)
+            upper = j;
+        for (k = 0; k <= upper; k++)
         {
-            l = 0;
-            r = upper_bound;
-            // binary search needs[j] and update lower bound
+            l = k + 1;
+            r = upper;
+            if (l > r)
+                break;
+            // binary search
             while (l < r - 1)
             {
                 mid = (l + r) / 2;
-                cout << l << "-" << r << "-" << mid << endl;
-                if (numbers[mid] < needs[k])
+                //cout << numbers[k] << "--" << l << mid << r << endl;
+                if (numbers[mid] + numbers[k] < m)
                 {
                     l = mid;
                 }
-                else if (numbers[mid] > needs[k])
+                else if (numbers[mid] + numbers[k] > m)
                 {
                     r = mid;
-                    upper_bound = r;
                 }
                 else
                 {
-                    cout<<"ok" << numbers[mid] << endl;
-                    (k - mid)*(m-needs[k]-numbers[mid])
                     count++;
                     break;
                 }
             }
-            if ((l < r - 1) && (numbers[l] == needs[k] || numbers[r] == needs[k]))
+
+            // judge the edge conditioins 1.l==r 2.r==r+1
+            if ((l >= r - 1) && (numbers[r] + numbers[k] == m || numbers[l] + numbers[k] == m))
             {
                 count++;
             }
         }
 
-        cout << count <<endl;
+        cout << count << endl;
     }
 }
