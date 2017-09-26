@@ -3,7 +3,8 @@
 using namespace std;
 long a[5001];
 
-int binary_search(int l,int r, long target){
+int binary_search(int l, int r, long target)
+{
     int mid;
 
     // binary search
@@ -11,11 +12,11 @@ int binary_search(int l,int r, long target){
     {
         mid = (l + r) / 2;
         //cout << numbers[k] << "--" << l << mid << r << endl;
-        if (a[mid]  < target)
+        if (a[mid] < target)
         {
             l = mid;
         }
-        else if (a[mid]  > target)
+        else if (a[mid] > target)
         {
             r = mid;
         }
@@ -28,9 +29,12 @@ int binary_search(int l,int r, long target){
     // judge the edge conditioins 1.l==r 2.r==r+1
     if ((l >= r - 1))
     {
-        if(a[l] == target){
+        if (a[l] == target)
+        {
             return l;
-        }else if(a[r]==target){
+        }
+        else if (a[r] == target)
+        {
             return r;
         }
     }
@@ -59,23 +63,28 @@ int main()
         if (upper == -1)
             upper = n;
         bool find = false;
-        for(j = 0;j<upper;j++){
-            long r1 = m-a[j];
-            if(r1<a[j+1]){
+        for (j = 0; j < upper; j++)
+        {
+            long r1 = m - a[j];
+            if (r1 < a[j + 1])
+            {
                 break;
             }
-            for(k = j+1;k<upper;k++){
-                long r2 = r1-a[k];
-                if(r2<a[k+1]){
+            for (k = j + 1; k < upper; k++)
+            {
+                long r2 = r1 - a[k];
+                if (r2 < a[k + 1])
+                {
                     break;
                 }
-                int tmp = binary_search(k+1,upper-1,r2);
-                if(tmp!=-1)
+                int tmp = binary_search(k + 1, upper - 1, r2);
+                if (tmp != -1)
                     find = true;
-                if(find)
+                if (find)
                     break;
             }
-            if(find){
+            if (find)
+            {
                 break;
             }
         }

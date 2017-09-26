@@ -11,8 +11,8 @@ int main()
     {
         cin >> n >> m;
         int j, k, upper = -1;
-        memset(a, 0, sizeof(long)*n);
-        memset(sum, 0, sizeof(long)*n*n);
+        memset(a, 0, sizeof(long) * n);
+        memset(sum, 0, sizeof(long) * n * n);
         // input data
         for (j = 0; j < n; j++)
         {
