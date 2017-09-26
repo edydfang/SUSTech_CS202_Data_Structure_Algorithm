@@ -4,9 +4,9 @@ Time Limit: 1 Sec  Memory Limit: 128 MB
 
 #### Description
 
-Given an sorted integer array A and a specific target m. Cuperman defines (i,j) is index twin if A[i] + A[j] = m. Could you help Cuperman to find how many index twins are in the given array A with a specific target m.
+Given an sorted `ascending` integer array A and a specific target m. Cuperman defines (i,j) is index twin if A[i] + A[j] = m. Could you help Cuperman to find how many index twins are in the given array A with a specific target m.
 Input
-
+so
 The first line will be an integer T(1<T<=10), which is the number of test cases.
 
 For each case contain two lines.The first line contains two numbers n(1<=n<=5000) and m(1<=m<=108), n is the size of array A. m is the specified target.
