@@ -11,4 +11,5 @@ int main(){
         long long result = T*(T+1)*(2*T+1)/6;
         cout << result << endl;
     }
+    return 0;
 }
