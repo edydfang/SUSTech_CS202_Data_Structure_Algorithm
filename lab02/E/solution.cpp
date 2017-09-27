@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+/*
 long get_power_mod(long base, long power, long mod, long data[])
 {
     if (power == 0)
@@ -26,6 +27,21 @@ long get_power_mod(long base, long power, long mod, long data[])
         return data[power];
     }
 }
+*/
+long quickpow(long base, long exp) {
+    long ans = 1, b = base;
+    while(exp != 0) {
+        if(exp & 1) {
+            ans *= b;
+            ans %= 123456789;
+        }
+        b *= b;
+        b %= 123456789;
+        exp >>= 1;
+    }
+    return ans;
+}
+
 
 int main()
 {
@@ -70,13 +86,14 @@ int main()
             {
                 
                 long p = powers[j];
-                cout << " pwr  "<<long(log(p) / log(2)) + 1 << endl;
-                long power_result[long(log(p) / log(2)) + 1];
-                cout << " pwr gg" << endl;
-                fill_n(power_result, p + 1, -1);
+                //cout << " pwr  "<<long(log(p) / log(2)) + 1 << endl;
+                //long power_result[long(log(p) / log(2)) + 1];
+                //cout << " pwr gg" << endl;
+                //fill_n(power_result, p + 1, -1);
                 //memset(power_result,-1L,sizeof(long)*powers[j]);
 
-                long x = get_power_mod(a[j], p, 123456789L, power_result);
+                //long x = get_power_mod(a[j], p, 123456789L, power_result);
+                long x  = quickpow(a[j],p);
                 cout << x;
             }
             else
