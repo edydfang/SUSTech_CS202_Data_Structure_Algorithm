@@ -28,19 +28,20 @@ long get_power_mod(long base, long power, long mod, long data[])
     }
 }
 */
+// reference https://xuanwo.org/2015/03/18/number-theory-quick-pow/
 long quickpow(long base, long exp)
 {
     long ans = 1, b = base;
     while (exp != 0)
     {
-        if (exp & 1)
+        if (exp & 1) // result 1 mod 2
         {
             ans *= b;
             ans %= 123456789;
         }
-        b *= b;
+        b *= b; // from inner to outer, square
         b %= 123456789;
-        exp >>= 1;
+        exp >>= 1; // divide by 2
     }
     return ans;
 }
@@ -86,13 +87,6 @@ int main()
             //cout << "pow" << powers[j] << endl;
 
             long p = powers[j];
-            //cout << " pwr  "<<long(log(p) / log(2)) + 1 << endl;
-            //long power_result[long(log(p) / log(2)) + 1];
-            //cout << " pwr gg" << endl;
-            //fill_n(power_result, p + 1, -1);
-            //memset(power_result,-1L,sizeof(long)*powers[j]);
-
-            //long x = get_power_mod(a[j], p, 123456789L, power_result);
             long x = quickpow(a[j], p);
             cout << x;
 

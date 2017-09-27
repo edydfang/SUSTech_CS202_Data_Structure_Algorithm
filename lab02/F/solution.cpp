@@ -1,6 +1,11 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+int compare (const void * a, const void * b)
+{
+  return ( *(int*)a - *(int*)b );
+}
+
 bool is_feasible(long seat[],int n,long dist,int k){
     int taken = 1,i;
     long last_pos = seat[0];
@@ -27,8 +32,9 @@ int main(){
         for(j=0;j<N;j++){
             cin>>seat[j];
         }
+        qsort (seat, N, sizeof(long), compare);
         // bound of the max min distance
-        long l = 0,r = seat[N-1] - seat[0], mid;
+        long l = 1,r = (seat[N-1] - seat[0])/(K-1)+1, mid;
         while(l<r-1){
             mid = (l+r)/2;
             if(is_feasible(seat,N,mid,K)){

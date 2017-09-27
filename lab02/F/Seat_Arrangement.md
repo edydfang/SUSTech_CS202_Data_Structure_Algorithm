@@ -15,7 +15,7 @@ T test cases follow, for each test case:
 
 The first line contains two integers N and K (2 <= `K` <= `N` <= 100000)
 
-The second line contains `N` integers, which are the positions of available seats, i.e., the i-th integer is the position of seat[i] \(0 <= seat[i] <= 109\).
+The second line contains `N` integers, which are the positions of available seats, i.e., the i-th integer is the position of seat[i] \(0 <= seat[i] <= 10^9\).
 
 #### Output
 
