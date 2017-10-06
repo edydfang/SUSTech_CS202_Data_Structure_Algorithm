@@ -30,7 +30,7 @@ int main()
         qsort (y, n, sizeof(long), compare);
         for (j = 0; j < m + n; j++)
         {
-            if (k < m && x[k] < y[t])
+            if (k < m && x[k] <= y[t])
             {
                 cout << x[k];
                 k++;
@@ -39,11 +39,14 @@ int main()
             {
                 cout << y[t];
                 t++;
+            }else if (k < m && x[k] > y[t]){
+                cout << x[k];
+                k++;
             }
-            //if (k + t < m + n)
+            if (k + t < m + n)
                 cout << " ";
         }
-        //if (i != T - 1)
+        if (i != T - 1)
             cout << endl;
     }
 
