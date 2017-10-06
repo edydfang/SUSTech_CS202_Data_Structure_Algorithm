@@ -29,6 +29,7 @@ int main()
         for (map<int, long>::iterator iter = fst.begin(); iter != fst.end(); ++iter)
         {
             map<int, long>::iterator itscd = scd.find(iter->first);
+            //cout << "gg" << iter->first <<endl;
             if (itscd != scd.end())
             {
                 sumup[iter->first] = iter->second + itscd->second;
@@ -45,23 +46,46 @@ int main()
                 sumup[iter->first] = iter->second;
             }
         }
+        bool plus = false;
         for (map<int, long>::iterator iter = sumup.begin(); iter != sumup.end(); ++iter)
         {
+            long coe = iter->second;
             if (iter->second != 0)
             {
-                if (iter->first != 0)
+                if (plus)
                 {
-                    cout << iter->second << "x^" << iter->first;
+                    if(coe>0){
+                    cout << "+";
+                }
                 }
                 else
                 {
+                    
+                    plus = true;
+                }
+                if (coe!=1&&coe!=-1)
+                {
                     cout << iter->second;
                 }
+                if(coe==-1){
+                    cout << "-";
+                }
+                if(coe==1 && iter->first ==0){
+                    cout << "1";
+                }
+                if (iter->first == 1)
+                {
+                    cout << "x";
+                }
+                else if (iter->first != 0)
+                {
+                    cout << "x^" << iter->first;
+                }
             }
-            if (iter != --sumup.end())
-            {
-                cout << "+";
-            }
+        }
+        if (!plus)
+        {
+            cout << "0";
         }
         cout << endl;
     }
