@@ -1,9 +1,9 @@
 #include <iostream>
 #include <stdlib.h>
 #include <map>
-
+ 
 using namespace std;
-
+ 
 int main()
 {
     int T, i, m, n, j, coe;
@@ -60,15 +60,18 @@ int main()
                 }
                 else
                 {
-                    
+                     
                     plus = true;
                 }
                 if (coe!=1&&coe!=-1)
                 {
                     cout << iter->second;
                 }
-                if(coe==-1){
+                if(coe==-1 && iter->first !=0){
                     cout << "-";
+                }
+                if(coe==-1 && iter->first ==0){
+                    cout << "-1";
                 }
                 if(coe==1 && iter->first ==0){
                     cout << "1";
