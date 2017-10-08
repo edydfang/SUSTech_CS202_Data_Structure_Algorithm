@@ -8,6 +8,7 @@ int move_median(set<int> sortedlst[], set<int>::iterator &cur_it, int cur_idx, i
     switch (left_right)
     {
     case 0: //left
+        //cout << "left" << endl;
         if (sortedlst[cur_idx].begin() != cur_it)
         {
             cur_it--;
@@ -15,24 +16,28 @@ int move_median(set<int> sortedlst[], set<int>::iterator &cur_it, int cur_idx, i
         }
         else
         {
-            set<int>::iterator it = sortedlst[cur_idx - 1].end();
+            cur_idx--;
+            while(sortedlst[cur_idx].size()==0){
+                cur_idx--;
+            }
+            set<int>::iterator it = sortedlst[cur_idx].end();
             cur_it = --it;
-            return --cur_idx;
+            return cur_idx;
         }
         break;
     case 1: //right
-        //cout << "s3" << endl;
-        set<int>::iterator it = cur_it;
-        if (++it == sortedlst[cur_idx].end())
+        cur_it++;
+        if (cur_it == sortedlst[cur_idx].end())
         {
-            //cout << "s0" << endl;
-            cur_it = sortedlst[++cur_idx].begin();
+            cur_idx++;
+            while(sortedlst[cur_idx].size()==0){
+                cur_idx++;
+            }
+            cur_it = sortedlst[cur_idx].begin();
             return cur_idx;
         }
         else
         {
-            //cout << "s1" << endl;
-            cur_it++;
             return cur_idx;
         }
         break;
@@ -48,11 +53,11 @@ int main()
         cin >> n;
         int tmp, bucket_idx, k, prev;
         set<int>::iterator median_it;
-        set<int> sortedlst[100]; //10 buckets
+        set<int> sortedlst[11]; //10 buckets
         for (j = 0; j < n; j++)
         {
             cin >> tmp;
-            bucket_idx = tmp / 100;
+            bucket_idx = tmp / 1000;
             sortedlst[bucket_idx].insert(tmp);
             if (j == 0)
             {
@@ -65,7 +70,6 @@ int main()
             }
             else
             {
-                //cout << "s2" << endl;
                 //cout << "input " << tmp << "k " << k << "median " << *median_it << endl;
                 if (prev < *median_it && tmp < *median_it)
                 {
@@ -85,5 +89,6 @@ int main()
         }
         cout << endl;
     }
+    
     return 0;
 }
