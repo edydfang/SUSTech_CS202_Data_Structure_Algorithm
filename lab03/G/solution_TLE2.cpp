@@ -1,6 +1,8 @@
 #include <iostream>
 #include <queue>
 
+// use two data structure heaps
+
 using namespace std;
 
 int main()

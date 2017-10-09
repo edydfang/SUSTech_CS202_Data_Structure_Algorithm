@@ -1,6 +1,8 @@
 #include <iostream>
 #include <set>
 
+// use multiple buckets
+
 using namespace std;
 
 int move_median(set<int> sortedlst[], set<int>::iterator &cur_it, int cur_idx, int left_right)

@@ -1,6 +1,8 @@
 #include <iostream>
 #include <set>
 
+// an optimized solution 1 when moving the pointer of the median
+
 using namespace std;
 
 int main()

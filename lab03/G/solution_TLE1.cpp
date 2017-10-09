@@ -1,6 +1,8 @@
 #include <iostream>
 #include <set>
 
+// use the data structure red black tree
+
 using namespace std;
 
 int main()
