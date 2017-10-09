@@ -37,9 +37,9 @@ int main()
         advance(node_median, n / 2);
         // tranvrse reversely
         list<int>::iterator removed[2];
-        int move = 0, result[n], k = 0, odd =1;
+        int move = 0, result[n], k = 0, odd = 1;
         result[k++] = *node_median;
-        removed[0] = node_seq[n-1];
+        removed[0] = node_seq[n - 1];
         for (j = n - 2; j > -1; j--)
         {
             //cout << "size" << linkedlist.size()<< endl;

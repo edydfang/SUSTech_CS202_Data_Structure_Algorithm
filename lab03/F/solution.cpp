@@ -2,28 +2,44 @@
 
 using namespace std;
 
-int main()
+class StringNode
 {
-    int T, i, j, n,cmd,pos;
-    string new_char;
-    cin >> T;
-    for(i=0;i<T;i++){
-        string text;
-        cin >> text;
-        cin >> n;
-        for(j=0;j<n;j++){
-            cin >> cmd;
-            switch(cmd){
-                case 1:
-                    cin >> new_char >> pos;
-                    text.insert(pos-1,new_char);
-                    break;
-                case 2:
-                    cin >> pos;
-                    cout << text[pos-1] << endl;
-                    break;
-            }
-        }
+private:
+    string data;
+    int size;
+public:
+    StringNode(string input){
+        this->data = input;
     }
+    char lookup(int pos);
+    void insert(char ch, int pos);
+};
+
+void StringNode::insert(char ch, int pos){
+    this->data.insert(pos,string(1,ch));
+}
+
+char StringNode::lookup(int pos){
+    return this->data[pos];
+}
+
+class LongString{
+private:
+    string[] data[];
+    int total_size;
+
+public:
+    LongString(string longstr){
+        this->total_size = longstr.size();
+    }
+    char lookup(int pos);
+    void insert(char ch, int pos);
+}
+
+int main(){
+    string input;
+    cin >> input;
+    StringNode* sn = new StringNode(input);
+    cout<<sn->lookup(4)<<endl;
     return 0;
 }

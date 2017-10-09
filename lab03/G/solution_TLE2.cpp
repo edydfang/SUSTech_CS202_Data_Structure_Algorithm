@@ -39,23 +39,36 @@ int main()
             }
             else
             {
-                if(small_part.size() < large_part.size()){
-                    if(tmp > small_part.top() && tmp < large_part.top()){
+                if (small_part.size() < large_part.size())
+                {
+                    if (tmp > small_part.top() && tmp < large_part.top())
+                    {
                         small_part.push(tmp);
-                    }else if(tmp > large_part.top()){
+                    }
+                    else if (tmp > large_part.top())
+                    {
                         small_part.push(large_part.top());
                         large_part.pop();
                         large_part.push(tmp);
-                    }else{
+                    }
+                    else
+                    {
                         small_part.push(tmp);
                     }
                     median = large_part.top();
-                }else{
-                    if(tmp > small_part.top() && tmp < large_part.top()){
+                }
+                else
+                {
+                    if (tmp > small_part.top() && tmp < large_part.top())
+                    {
                         large_part.push(tmp);
-                    }else if(tmp > large_part.top()){
+                    }
+                    else if (tmp > large_part.top())
+                    {
                         large_part.push(tmp);
-                    }else{
+                    }
+                    else
+                    {
                         large_part.push(small_part.top());
                         small_part.pop();
                         small_part.push(tmp);

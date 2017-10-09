@@ -19,7 +19,8 @@ int move_median(set<int> sortedlst[], set<int>::iterator &cur_it, int cur_idx, i
         else
         {
             cur_idx--;
-            while(sortedlst[cur_idx].size()==0){
+            while (sortedlst[cur_idx].size() == 0)
+            {
                 cur_idx--;
             }
             set<int>::iterator it = sortedlst[cur_idx].end();
@@ -32,7 +33,8 @@ int move_median(set<int> sortedlst[], set<int>::iterator &cur_it, int cur_idx, i
         if (cur_it == sortedlst[cur_idx].end())
         {
             cur_idx++;
-            while(sortedlst[cur_idx].size()==0){
+            while (sortedlst[cur_idx].size() == 0)
+            {
                 cur_idx++;
             }
             cur_it = sortedlst[cur_idx].begin();
@@ -59,7 +61,7 @@ int main()
         for (j = 0; j < n; j++)
         {
             cin >> tmp;
-            bucket_idx = tmp/1000;
+            bucket_idx = tmp / 1000;
             sortedlst[bucket_idx].insert(tmp);
             if (j == 0)
             {
@@ -68,8 +70,8 @@ int main()
                 //cout << *median_it;
                 printf("%d", *median_it);
                 if (j != n - 1 && j != n - 2)
-                //cout << " ";
-                printf(" ");
+                    //cout << " ";
+                    printf(" ");
             }
             else if (j % 2 == 1)
             {
@@ -88,11 +90,11 @@ int main()
                 }
                 printf("%d", *median_it);
                 if (j != n - 1 && j != n - 2)
-                printf(" ");
+                    printf(" ");
             }
         }
         cout << endl;
     }
-    
+
     return 0;
 }
