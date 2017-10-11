@@ -4,75 +4,114 @@ public class Main {
         Scanner s = new Scanner(System.in);
         int t = s.nextInt();
         for(int c=0;c<t;c++){
-            Map<Integer,Integer> mapa=new HashMap<>();
-            Map<Integer,Integer> mapb=new HashMap<>();
-            Map<Integer,Integer> mapr=new HashMap<>();
             int n = s.nextInt();
+            linked head=new linked();
+            linked tem=head;
             for(int i=0;i<n;i++)
             {
-                int coe=s.nextInt();
-                int exp=s.nextInt();
-                mapa.put(exp,coe);
+               tem.next=new linked(s.nextInt(),tem);
+               tem=tem.next;
             }
+            linked tail=new linked();
+            tem.next=tail;
+            tail.last=tem;
             int m = s.nextInt();
             for(int i=0;i<m;i++)
             {
-                int coe=s.nextInt();
-                int exp=s.nextInt();
-                mapb.put(exp,coe);
-            }
-            for(int i : mapa.keySet())
-                for(int j : mapb.keySet())
-                {
-                    if(mapr.containsKey(i+j))
-                        mapr.put(i+j,mapr.get(i+j)+mapa.get(i)*mapb.get(j));
-                    else
-                        mapr.put(i+j,mapa.get(i)*mapb.get(j));
+                int o=s.nextInt();
+                switch (o){
+                    case 1:
+                    {
+                        int k=s.nextInt();
+                        int v=s.nextInt();
+                        tem=head.next;
+                        for(int j=0;j<k;j++)
+                        {
+                            System.out.print(tem.value+" ");
+                            tem=tem.next;
+                        }
+                        linked insert=new linked(v,tem.last);
+                        insert.next=tem;
+                        tem.last.next=insert;
+                        tem.last=insert;
+                        tem=insert;
+                        while(tem.next!=null)
+                        {
+                            System.out.print(tem.value+" ");
+                            tem=tem.next;
+                        }
+                        System.out.println();
+                    }break;
+                    case 2:
+                    {
+                        int k=s.nextInt();
+                        tem=head.next;
+                        for(int j=0;j<k;j++)
+                        {
+                            System.out.print(tem.value+" ");
+                            tem=tem.next;
+                        }
+                        tem.last.next=tem.next;
+                        tem.next.last=tem.last;
+                        tem=tem.next;
+                        while(tem.next!=null)
+                        {
+                            System.out.print(tem.value+" ");
+                            tem=tem.next;
+                        }
+                        System.out.println();
+                    }break;
+                    case 3:
+                    {
+                        int k=s.nextInt();
+                        int v=s.nextInt();
+                        tem=head;
+                        for(int j=0;j<k;j++)
+                        {
+                            tem=tem.next;
+                            System.out.print(tem.value+" ");
+                        }
+                        tem.next.value=v;
+                        tem=tem.next;
+                        while(tem.next!=null)
+                        {
+                            System.out.print(tem.value+" ");
+                            tem=tem.next;
+                        }
+                        System.out.println();
+                    }break;
+                    case 4:
+                    {
+                        tem=tail;
+                        while(tem!=null)
+                        {
+                            linked swap = tem.last;
+                            tem.last=tem.next;
+                            tem.next=swap;
+                            tem=tem.next;
+                        }
+                        tem=tail;
+                        tail=head;
+                        head=tem;
+                        tem=head.next;
+                        while(tem.next!=null)
+                        {
+                            System.out.print(tem.value+" ");
+                            tem=tem.next;
+                        }
+                        System.out.println();
+                    }break;
                 }
-            StringBuilder sb=new StringBuilder();
-            List<Integer> list=new ArrayList<>(mapr.keySet());
-            Collections.sort(list);
-            for(int i:list)
-            {
-                String x;
-                String symbol="+";
-                String number;
-                int coe=mapr.get(i);
-                int exp=i;
-                if(exp==0)
-                    x="";
-                else if(exp==1)
-                    x="x";
-                else
-                    x="x^"+exp;
-
-                if(coe==1)
-                    number="";
-                else
-                    number=String.valueOf(coe);
-
-                if(exp==0 && coe==1)
-                    number="1";
-
-                sb.append(symbol+number+x);
             }
-            if(sb.length()==0)
-                sb.append(0);
-            else if(sb.charAt(0)=='+')
-                sb.replace(0,1,"");
-
-            System.out.println(sb);
         }
 
     }
     static class linked{
-        int coefficient;
-        int exponent=Integer.MAX_VALUE;
+        int value;
         linked next;
         linked last;
-        public linked(int c,int e,linked l){
-            this.coefficient=c;
-            this.exponent=e;
+        public linked(int v,linked l){
+            this.value=v;
             this.last=l;
         }
         public linked(linked l){
@@ -81,3 +120,4 @@ public class Main {
         public linked(){}
     }
 }
+

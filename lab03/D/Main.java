@@ -4,80 +4,54 @@ public class Main {
         Scanner s = new Scanner(System.in);
         int t = s.nextInt();
         for(int c=0;c<t;c++){
-            Map<Integer,Integer> mapa=new HashMap<>();
-            Map<Integer,Integer> mapb=new HashMap<>();
-            Map<Integer,Integer> mapr=new HashMap<>();
             int n = s.nextInt();
+            int k = s.nextInt();
+            linked head=new linked();
+            linked tem=head;
             for(int i=0;i<n;i++)
             {
-                int coe=s.nextInt();
-                int exp=s.nextInt();
-                mapa.put(exp,coe);
+               tem.next=new linked(i,tem);
+               tem=tem.next;
             }
-            int m = s.nextInt();
-            for(int i=0;i<m;i++)
+            tem.next=head.next;
+            head.next.last=tem;
+            tem=head.next;
+            int count=0;
+            while(tem.next!=tem)
             {
-                int coe=s.nextInt();
-                int exp=s.nextInt();
-                mapb.put(exp,coe);
-            }
-            for(int i : mapa.keySet())
-                for(int j : mapb.keySet())
+                if(count==k)
                 {
-                    if(mapr.containsKey(i+j))
-                        mapr.put(i+j,mapr.get(i+j)+mapa.get(i)*mapb.get(j));
-                    else
-                        mapr.put(i+j,mapa.get(i)*mapb.get(j));
+                    tem.last.next=tem.next;
+                    tem.next.last=tem.last;
+                    count=0;
+                    tem=tem.next;
                 }
-            StringBuilder sb=new StringBuilder();
-            List<Integer> list=new ArrayList<>(mapr.keySet());
-            Collections.sort(list);
-            for(int i:list)
-            {
-                String x;
-                String symbol="+";
-                String number;
-                int coe=mapr.get(i);
-                int exp=i;
-                if(exp==0)
-                    x="";
-                else if(exp==1)
-                    x="x";
                 else
-                    x="x^"+exp;
-
-                if(coe==1)
-                    number="";
-                else
-                    number=String.valueOf(coe);
-
-                if(exp==0 && coe==1)
-                    number="1";
-
-                sb.append(symbol+number+x);
+                {
+                    tem=tem.next;
+                    count++;
+                }
             }
-            if(sb.length()==0)
-                sb.append(0);
-            else if(sb.charAt(0)=='+')
-                sb.replace(0,1,"");
-
-            System.out.println(sb);
+            System.out.println(tem.value);
         }
 
     }
     static class linked{
-        int coefficient;
-        int exponent=Integer.MAX_VALUE;
+        int value;
         linked next;
         linked last;
-        public linked(int c,int e,linked l){
-            this.coefficient=c;
-            this.exponent=e;
+        public linked(int v,linked l){
+            this.value=v;
             this.last=l;
         }
         public linked(linked l){
             this.last=l;
         }
+        public linked(int v)
+        {
+            this.value=v;
+        }
         public linked(){}
     }
 }
+

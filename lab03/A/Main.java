@@ -4,80 +4,127 @@ public class Main {
         Scanner s = new Scanner(System.in);
         int t = s.nextInt();
         for(int c=0;c<t;c++){
-            Map<Integer,Integer> mapa=new HashMap<>();
-            Map<Integer,Integer> mapb=new HashMap<>();
-            Map<Integer,Integer> mapr=new HashMap<>();
             int n = s.nextInt();
-            for(int i=0;i<n;i++)
-            {
-                int coe=s.nextInt();
-                int exp=s.nextInt();
-                mapa.put(exp,coe);
-            }
             int m = s.nextInt();
+            linkedlist list1 = new linkedlist();
+            linkedlist list2 = new linkedlist();
+            for(int i=0;i<n;i++)
+                list1.addLast(s.nextInt());
             for(int i=0;i<m;i++)
-            {
-                int coe=s.nextInt();
-                int exp=s.nextInt();
-                mapb.put(exp,coe);
-            }
-            for(int i : mapa.keySet())
-                for(int j : mapb.keySet())
+                list2.addLast(s.nextInt());
+            StringBuilder result= new StringBuilder();
+            linked tem1=list1.head;
+            linked tem2=list2.head;
+            linked tem;
+            int i=0,j=0;
+            while(tem1!=null || tem2!=null){
+                if(tem1==null)
                 {
-                    if(mapr.containsKey(i+j))
-                        mapr.put(i+j,mapr.get(i+j)+mapa.get(i)*mapb.get(j));
-                    else
-                        mapr.put(i+j,mapa.get(i)*mapb.get(j));
+                    tem=tem2;
+                    tem2=tem2.next;
                 }
-            StringBuilder sb=new StringBuilder();
-            List<Integer> list=new ArrayList<>(mapr.keySet());
-            Collections.sort(list);
-            for(int i:list)
-            {
-                String x;
-                String symbol="+";
-                String number;
-                int coe=mapr.get(i);
-                int exp=i;
-                if(exp==0)
-                    x="";
-                else if(exp==1)
-                    x="x";
+                else if(tem2==null)
+                {
+                    tem=tem1;
+                    tem1=tem1.next;
+                }
+                else if(tem1.value<tem2.value)
+                {
+                    tem=tem1;
+                    tem1=tem1.next;
+                }
                 else
-                    x="x^"+exp;
-
-                if(coe==1)
-                    number="";
-                else
-                    number=String.valueOf(coe);
-
-                if(exp==0 && coe==1)
-                    number="1";
-
-                sb.append(symbol+number+x);
+                {
+                    tem=tem2;
+                    tem2=tem2.next;
+                }
+                result.append(tem.value);
+                result.append(" ");
             }
-            if(sb.length()==0)
-                sb.append(0);
-            else if(sb.charAt(0)=='+')
-                sb.replace(0,1,"");
-
-            System.out.println(sb);
+            System.out.println(result.toString());
         }
 
     }
+
     static class linked{
-        int coefficient;
-        int exponent=Integer.MAX_VALUE;
+        int value;
         linked next;
         linked last;
-        public linked(int c,int e,linked l){
-            this.coefficient=c;
-            this.exponent=e;
-            this.last=l;
+        linked(linked last,int v,linked next){
+            this.last=last;
+            this.value=v;
+            this.next=next;
         }
-        public linked(linked l){
-            this.last=l;
+    }
+
+    static class linkedlist{
+        int length;
+        linked head;
+        linked tail;
+        void addAfter(linked father,int v){
+            if(father==tail)
+                addLast(v);
+            else
+            {
+                linked insert=new linked(father,v,father.next);
+                father.next.last=insert;
+                father.next=insert;
+                length++;
+            }
         }
-        public linked(){}
+        void addBefore(linked son,int v) {
+            if(head==son)
+                addFirst(v);
+            else {
+                linked insert = new linked(son.last, v, son);
+                son.last.next = insert;
+                son.last = insert;
+                length++;
+            }
+        }
+        void addLast(int v) {
+            linked insert = new linked(tail, v, null);
+            if(tail==null)
+                head=insert;
+            else
+                tail.next=insert;
+            tail=insert;
+            length++;
+        }
+        void addFirst(int v){
+            linked insert = new linked(null,v,head);
+            if(head==null)
+                tail=insert;
+            else
+                head.last=insert;
+            head=insert;
+            length++;
+        }
+        void add(int n,int v){
+            if(n==0)
+                addFirst(v);
+            else if(n==length)
+                addLast(v);
+            else {
+                addBefore(node(n),v);
+            }
+            length++;
+        }
+        linked node(int n){
+            if(n<(length>>1))
+            {
+                linked x=head;
+                for(int i=0;i<n;i++)
+                    x=x.next;
+                return x;
+            }
+            else{
+                linked x=tail;
+                for(int i=length-1;i>n;i--)
+                    x=x.last;
+                return x;
+            }
+        }
     }
 }
+

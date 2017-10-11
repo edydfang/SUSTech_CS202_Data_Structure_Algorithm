@@ -4,64 +4,100 @@ public class Main {
         Scanner s = new Scanner(System.in);
         int t = s.nextInt();
         for(int c=0;c<t;c++){
-            Map<Integer,Integer> mapa=new HashMap<>();
-            Map<Integer,Integer> mapb=new HashMap<>();
-            Map<Integer,Integer> mapr=new HashMap<>();
             int n = s.nextInt();
+            linked list1 = new linked();
+            linked tem=list1;
             for(int i=0;i<n;i++)
             {
-                int coe=s.nextInt();
-                int exp=s.nextInt();
-                mapa.put(exp,coe);
+                tem.next=new linked(s.nextInt(),s.nextInt(),tem);
+                tem=tem.next;
             }
+            tem.next=new linked(tem);
             int m = s.nextInt();
+            linked list2 = new linked();
+            tem=list2;
             for(int i=0;i<m;i++)
             {
-                int coe=s.nextInt();
-                int exp=s.nextInt();
-                mapb.put(exp,coe);
+                tem.next=new linked(s.nextInt(),s.nextInt(),tem);
+                tem=tem.next;
             }
-            for(int i : mapa.keySet())
-                for(int j : mapb.keySet())
-                {
-                    if(mapr.containsKey(i+j))
-                        mapr.put(i+j,mapr.get(i+j)+mapa.get(i)*mapb.get(j));
-                    else
-                        mapr.put(i+j,mapa.get(i)*mapb.get(j));
-                }
-            StringBuilder sb=new StringBuilder();
-            List<Integer> list=new ArrayList<>(mapr.keySet());
-            Collections.sort(list);
-            for(int i:list)
+            tem.next=new linked(tem);
+            linked tem1=list1,tem2=list2;
+            while(tem1.next!=null || tem2.next!=null)
             {
-                String x;
-                String symbol="+";
-                String number;
-                int coe=mapr.get(i);
-                int exp=i;
-                if(exp==0)
+                if(tem1.next==null || tem1.exponent>tem2.exponent)
+                {
+                    linked add=new linked(0,tem2.exponent,tem1.last);
+                    tem1.last.next=add;
+                    add.next=tem1;
+                    tem1.last=add;
+                    tem2=tem2.next;
+                }
+                else if(tem2.next==null || tem1.exponent<tem2.exponent)
+                {
+                    linked add=new linked(0,tem1.exponent,tem2.last);
+                    tem2.last.next=add;
+                    add.next=tem2;
+                    tem2.last=add;
+                    tem1=tem1.next;
+                }
+                else
+                {
+                    tem1=tem1.next;
+                    tem2=tem2.next;
+                }
+            }
+            tem1=list1.next;
+            tem2=list2.next;
+            StringBuilder result= new StringBuilder();
+            String x;
+            String number;
+            String symbol;
+            while (tem1.next!=null)
+            {
+                int coefficient = tem1.coefficient+tem2.coefficient;
+                int exponent = tem1.exponent;
+                if(coefficient==0)
+                {
+                    tem1=tem1.next;
+                    tem2=tem2.next;
+                    continue;
+                }
+                if(exponent==0)
+                {
                     x="";
-                else if(exp==1)
+                }
+                else if(exponent==1)
                     x="x";
                 else
-                    x="x^"+exp;
+                    x="x^"+exponent;
 
-                if(coe==1)
-                    number="";
+                if(coefficient>0)
+                    symbol="+";
                 else
-                    number=String.valueOf(coe);
+                    symbol="";
 
-                if(exp==0 && coe==1)
-                    number="1";
+                if(coefficient==1)
+                    number="";
+                else if(coefficient==-1)
+                    number="-";
+                else
+                    number=String.valueOf(coefficient);
 
-                sb.append(symbol+number+x);
+                if(exponent==0 && Math.abs(coefficient)==1)
+                {
+                    number=String.valueOf(coefficient);
+                }
+
+                result.append(symbol+number+x);
+                tem1=tem1.next;
+                tem2=tem2.next;
             }
-            if(sb.length()==0)
-                sb.append(0);
-            else if(sb.charAt(0)=='+')
-                sb.replace(0,1,"");
-
-            System.out.println(sb);
+            if(result.length()==0)
+                result.append(0);
+            else if(result.charAt(0)=='+')
+                result.replace(0,1,"");
+            System.out.println(result.toString());
         }
 
     }
@@ -81,3 +117,4 @@ public class Main {
         public linked(){}
     }
 }
+
