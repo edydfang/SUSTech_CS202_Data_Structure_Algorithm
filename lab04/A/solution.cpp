@@ -18,8 +18,10 @@ int main(){
                     stack_.push(tmp);
                 }
             }else{
-                cout << stack_.top() << endl;
-                stack_.pop();
+                if(!stack_.empty()){
+                    cout << stack_.top() << endl;
+                    stack_.pop();
+                }
             }
         }
         while(!stack_.empty()){
