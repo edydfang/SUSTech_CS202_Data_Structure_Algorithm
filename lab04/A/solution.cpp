@@ -1,10 +1,11 @@
 #include <iostream>
+#include <stdio.h>
 
 using namespace std;
 int stack[1000];
+int T, n, m, i, j, cmd, tmp, top = -1;
 int main()
 {
-    int T, n, m, i, j, cmd, tmp, top = -1;
     cin >> T;
     for (i = 0; i < T; i++)
     {
