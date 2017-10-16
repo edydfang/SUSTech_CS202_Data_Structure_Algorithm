@@ -4,7 +4,7 @@ Time Limit: 1 Sec  Memory Limit: 128 MB
 
 ## Description
 
-Giving you three integers: n, m, k and a sequence {an}. The elements in {an} are distinct. Please find the longest continuous subsequence whose kth smallest element is as large as possible. And the subsequence’s length is larger than or equal to m. Please print the length of the subsequence.
+Giving you three integers: n, m, k and a sequence {a_n}. The elements in {a_n} are distinct. Please find the longest continuous subsequence whose kth smallest element is as large as possible. And the subsequence’s length is larger than or equal to m. Please print the length of the subsequence.
 
 ## Input
 
