@@ -11,19 +11,19 @@ int main()
     {
         top = -1;
         //cin >> n >> m;
-        scanf("%d %d",&n, &m);
+        scanf("%d %d", &n, &m);
         for (j = 0; j < m; j++)
         {
             //cin >> cmd;
-            scanf("%d",&cmd);
+            scanf("%d", &cmd);
             if (cmd == 1)
             {
-                scanf("%d",&tmp);
+                scanf("%d", &tmp);
                 //cin >> tmp;
-                if (top == n-1)
+                if (top == n - 1)
                 {
                     //cout << tmp << endl;
-                    printf("%d\n",tmp);
+                    printf("%d\n", tmp);
                 }
                 else
                 {
@@ -31,15 +31,16 @@ int main()
                     stack[++top] = tmp;
                 }
             }
-            else if(top!=-1)
+            else if (top != -1)
             {
                 //cout << stack[top--] << endl;
-                printf("%d\n",stack[top--]);
+                printf("%d\n", stack[top--]);
             }
         }
-        for(j=top;j>-1;j--){
+        for (j = top; j > -1; j--)
+        {
             //cout << stack[j] << endl;
-            printf("%d\n",stack[j]);
+            printf("%d\n", stack[j]);
         }
     }
     return 0;
