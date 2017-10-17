@@ -70,7 +70,8 @@ int main()
                     }
                 }
             }
-            if(!stack_.empty()){
+            if (!stack_.empty())
+            {
                 flag = 1;
             }
             if (flag)
