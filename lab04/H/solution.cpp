@@ -15,7 +15,9 @@ int compare(const void *a, const void *b)
 void find_maxlen(int max_k, int last_idx)
 {
     maxlen = m;
-    int count = 0, t = 0, head = 0;
+    int head = 0;
+    /*
+    int count = 0, t = 0
     for (j = last_idx - m + 1; j <= last_idx; j++)
     {
         if (a[j] <= max_k)
@@ -23,6 +25,7 @@ void find_maxlen(int max_k, int last_idx)
             count++;
         }
     }
+    */
     for (j = last_idx + 1; j < n; j++)
     {
         if (a[j] > max_k)
@@ -41,13 +44,14 @@ void find_maxlen(int max_k, int last_idx)
             }
         }
     }
+    //cout << "start"<<a[last_idx - m + 1 + head] << "end"<<a[j-1]<<endl;
 }
 
 // check whether the k_val is larger than the actual value or not
 int test(int k_val)
 {
     //cout << "max_k--val" <<  k_val <<endl;
-    // the number of ai that is equal to or smaller than k_val
+    // the number of ai that is equal to or greater than k_val
     int count = 0;
     // return the index of stisfied block or -1
     for (j = 0; j < m; j++)
