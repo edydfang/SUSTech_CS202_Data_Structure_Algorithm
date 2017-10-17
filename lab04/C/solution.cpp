@@ -10,9 +10,9 @@ char in_char;
 int main()
 {
     scanf("%d", &T);
-    stack<int> stack_;
     for (i = 0; i < T; i++)
     {
+        stack<int> stack_;
         flag = 0;
         //scanf("%d", &n);
         cin >> n;
@@ -69,6 +69,9 @@ int main()
                         }
                     }
                 }
+            }
+            if(!stack_.empty()){
+                flag = 1;
             }
             if (flag)
             {
