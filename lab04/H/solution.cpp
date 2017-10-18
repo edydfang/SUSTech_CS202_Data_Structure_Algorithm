@@ -4,7 +4,7 @@
 #include <cstring>
 using namespace std;
 
-int T, i, j, n, m, k, l, r, mid, max_k_val, maxlen, queue_idx, idx;
+int T, i, j, n, m, k, l, r, mid, max_k_val, queue_idx, idx;
 int a[300000], sorted[300000];
 bool block[300000];
 int compare(const void *a, const void *b)
@@ -12,20 +12,51 @@ int compare(const void *a, const void *b)
     return (*(int *)a - *(int *)b);
 }
 
-void find_maxlen(int max_k, int last_idx)
+int find_maxlen(int max_k)
+{
+    int count = 0, tail = 0, maxlen = 0, head;
+    // k-1 smaller than kth_val; +1
+    while (tail < n && count < k - 1)
+    {
+        if (a[tail + 1] < max_k)
+            count++;
+        tail++;
+    }
+    if (count < k - 1)
+        return m;
+    while (tail < n && a[tail + 1] >= max_k)
+    {
+        tail++;
+    }
+    for (head = 1; head <= n - k + 1; ++head)
+    {
+        if (tail - head + 1 >= m && count == k - 1)
+        {
+            maxlen = max(maxlen, tail - head + 1);
+        }
+        if (a[head] < max_k)
+            count--;
+        while (tail < n && count < k - 1)
+        {
+            if (a[tail + 1] < max_k)
+                count++;
+            tail++;
+        }
+        if (count < k - 1)
+            return maxlen;
+        while (tail < n && a[tail + 1] >= max_k)
+        {
+            tail++;
+        }
+    }
+    return maxlen;
+}
+
+/*
+void find_maxlen2(int max_k, int last_idx)
 {
     maxlen = m;
     int head = 0;
-    /*
-    int count = 0, t = 0
-    for (j = last_idx - m + 1; j <= last_idx; j++)
-    {
-        if (a[j] <= max_k)
-        {
-            count++;
-        }
-    }
-    */
     for (j = last_idx + 1; j < n; j++)
     {
         if (a[j] > max_k)
@@ -46,6 +77,7 @@ void find_maxlen(int max_k, int last_idx)
     }
     //cout << "start"<<a[last_idx - m + 1 + head] << "end"<<a[j-1]<<endl;
 }
+*/
 
 // check whether the k_val is larger than the actual value or not
 int test(int k_val)
@@ -138,7 +170,8 @@ int main()
             max_k_val = sorted[l];
         }
         //cout << idx  << "-"  << max_k_val << endl;
-        find_maxlen(max_k_val, idx);
+        //find_maxlen(max_k_val, idx);
+        int maxlen = find_maxlen(max_k_val);
         printf("%d\n", maxlen);
     }
     return 0;
