@@ -4,7 +4,7 @@ Time Limit: 1 Sec  Memory Limit: 128 MB
 
 ## Description
 
-Do you know how to hash a string? Normally we represent a string in an integer. Then we can transfer from dealing with strings to dealing with integers, which is more convenient. A popular way of hashing a string is:Shash=∑|S0,i|*cnt(S0,i). where Shash is an integer, which is the hash value. S0,i is the substring of S from position 0 to position i. cnt(S0,i) is how many times S0,i appears in S. Now give you a string S, please calculate the hashed value Shash.
+Do you know how to hash a string? Normally we represent a string in an integer. Then we can transfer from dealing with strings to dealing with integers, which is more convenient. A popular way of hashing a string is:S_{hash}=∑(|S_{0,i}|*cnt(S_{0,i})). where S_{hash} is an integer, which is the hash value. S_{0,i} is the substring of S from position 0 to position i. cnt(S_{0,i}) is how many times S_{0,i} appears in S. Now give you a string S, please calculate the hashed value Shash.
 
 ## Input
 
