@@ -26,23 +26,14 @@ vector<int> computePrefix(string pat)
     }
     return longestPrefix;
 }
-long solve(string pat)
+long solve(string str)
 {
-    long hash = 0;
-    int m = pat.size();
+    long cycle = 0;
+    int m = str.size();
     long count[m];
-    vector<int> longestPrefix = computePrefix(pat);
-    for (int i = 0; i < m; i++)
-    {
-        count[i] = 1;
-    }
-    for (int i = m - 1; i > -1; i--)
-    {
-        count[longestPrefix[i]-1] += count[i];
-        hash += (long)(i + 1) * count[i];
-        //cout << i+1 << "-" << count[i] << endl;
-    }
-    return hash;
+    vector<int> longestPrefix = computePrefix(str);
+    cycle = m - longestPrefix[m-1];
+    return cycle;
 }
 int T, i, tmp;
 string str;

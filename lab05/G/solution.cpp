@@ -26,35 +26,39 @@ vector<int> computePrefix(string pat)
     }
     return longestPrefix;
 }
-long solve(string pat)
+void solve(string str)
 {
-    long hash = 0;
-    int m = pat.size();
-    long count[m];
-    vector<int> longestPrefix = computePrefix(pat);
-    for (int i = 0; i < m; i++)
+    long cycle = 0;
+    int m = str.size();
+    int count = 0, curr[m];
+    vector<int> longestPrefix = computePrefix(str);
+    int pre = longestPrefix[m - 1];
+    while (pre > 0)
     {
-        count[i] = 1;
+        curr[count++] = pre;
+        //cout << pre <<"pre" << endl;
+        pre = longestPrefix[pre] - 1;
     }
-    for (int i = m - 1; i > -1; i--)
+    for (int n = count - 1; n > -1; n--)
     {
-        count[longestPrefix[i]-1] += count[i];
-        hash += (long)(i + 1) * count[i];
-        //cout << i+1 << "-" << count[i] << endl;
+        //cout << "curr" << curr[n] << "\n";
+        cout << str.substr(0, curr[n]) << "\n";
     }
-    return hash;
+    cout << str << "\n";
+    cout << "\n";
+    return;
 }
 int T, i, tmp;
 string str;
 int main()
 {
-    ios::sync_with_stdio(false);
+    //ios::sync_with_stdio(false);
     cin.tie(0);
     cin >> T;
     for (i = 0; i < T; i++)
     {
         cin >> tmp >> str;
-        cout << solve(str) << endl;
+        solve(str);
     }
     return 0;
 }
