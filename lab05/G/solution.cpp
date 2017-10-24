@@ -36,16 +36,16 @@ void solve(string str)
     while (pre > 0)
     {
         curr[count++] = pre;
-        //cout << pre <<"pre" << endl;
-        pre = longestPrefix[pre] - 1;
+        //cout << pre << "  pre" << endl;
+        pre = longestPrefix[pre-1];
     }
     for (int n = count - 1; n > -1; n--)
     {
         //cout << "curr" << curr[n] << "\n";
-        cout << str.substr(0, curr[n]) << "\n";
+        cout << str.substr(0, curr[n]) << endl;
     }
-    cout << str << "\n";
-    cout << "\n";
+    cout << str << endl;
+    cout << endl;
     return;
 }
 int T, i, tmp;

@@ -25,12 +25,14 @@ int main(){
         int counter = 0;
         int pre = Next[len];
         while(pre>0) {
+            //printf("pre %d\n", pre);
             curr[counter] = pre;
             counter++;
             pre = Next[pre];
         }
         int n = counter-1;
         while(n-->=0){
+            //printf("curr %d\n", curr[n+1]);
             for(int i = 0; i < curr[n+1]; i++) {
                 printf("%c", text[i]);
             }
